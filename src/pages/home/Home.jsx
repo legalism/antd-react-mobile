@@ -1,8 +1,18 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import styles from './styles.css'
 import {Icon, NavBar} from "antd-mobile";
 
 class Home extends Component {
+    static propTypes = {
+        title: PropTypes.object.isRequired,
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
     render() {
         return (
             <div>
