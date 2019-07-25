@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Route, hashHistory} from "react-router-dom";
 import './index.css';
-import App from './App';
-import Shelf from "./Shelf";
 import * as serviceWorker from './serviceWorker';
+import AppRouter from './router/index'
 
 ReactDOM.render(
-    <Router>
-        <Route exact path="/" component={App}>
-        </Route>
-        <Route exact path="/home" component={Shelf}/>
-    </Router>,
-    document.getElementById('root'),
+  <AppRouter/>,
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

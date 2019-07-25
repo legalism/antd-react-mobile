@@ -1,5 +1,8 @@
-import React, {Component} from 'react'
-import {WhiteSpace, Tabs, Badge, SearchBar} from 'antd-mobile'
+import React, {Component} from 'react';
+import {WhiteSpace, Tabs, Badge, SearchBar} from 'antd-mobile';
+import PageView from './pageview/PageView';
+import Quality from './quality/index';
+import Cate from './cate/index';
 
 
 const tabs = [
@@ -13,51 +16,31 @@ export default class Life extends Component {
     super(props);
   }
   
+  renderContent = tab => {
+    return <div className="content"><PageView/></div>;
+  }
+  
   render() {
     return (
-      <div>
+      <div className="life">
         <SearchBar
           placeholder="手动获取获取光标"
           ref={ref => this.manualFocusInst = ref}
         />
         <Tabs tabs={tabs}
-              initialPage={1}
+              initialPage={0}
               onChange={(tab, index) => {
                 console.log('onChange', index, tab);
               }}
               onTabClick={(tab, index) => {
                 console.log('onTabClick', index, tab);
               }}
+        
         >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '300px',
-            backgroundColor: '#fff'
-          }}>
-            Content of first tab
-          </div>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '300px',
-            backgroundColor: '#fff'
-          }}>
-            Content of second tab
-          </div>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '300px',
-            backgroundColor: '#fff'
-          }}>
-            Content of third tab
-          </div>
+          {this.renderContent}
+          {<div className="content"><Quality/></div>}
+          {<div className="content"><Cate/></div>}
         </Tabs>
-        <WhiteSpace/>
       </div>
     );
   }
