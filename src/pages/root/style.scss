@@ -1,0 +1,18 @@
+.login {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  .loading-example {
+    width: fit-content;
+    height: fit-content;
+    display: block;
+    justify-content: flex-start;
+    align-content: flex-end;
+    margin: 20px auto;
+  }
+}

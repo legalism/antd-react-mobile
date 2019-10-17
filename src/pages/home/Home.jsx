@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import styles from './styles.css'
 import {Icon, NavBar, ListView} from "antd-mobile";
+import {useHistory} from "react-router-dom";
 
 
 const data = [
@@ -40,6 +41,8 @@ class Home extends Component {
   
   constructor(props) {
     super(props);
+    this.handleLinkClick = this.handleLinkClick.bind(this);
+    
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     });
@@ -48,6 +51,14 @@ class Home extends Component {
       dataSource,
       isLoading: true,
     };
+  }
+  
+  handleLinkClick(rowID) {
+    // window.history.pushState(null, "", `/#/${key}`);
+    let {history} = this.props;
+    // const {history} = useHistory();
+    history.push("/home/details");
+    // this.forceUpdate();
   }
   
   componentDidMount() {
@@ -80,9 +91,9 @@ class Home extends Component {
       return;
     }
     console.log('reach end', event);
-    this.setState({ isLoading: true });
+    this.setState({isLoading: true});
     setTimeout(() => {
-      this.rData = { ...this.rData, ...genData(++pageIndex) };
+      this.rData = {...this.rData, ...genData(++pageIndex)};
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(this.rData),
         isLoading: false,
@@ -109,7 +120,7 @@ class Home extends Component {
       }
       const obj = data[index--];
       return (
-        <div key={rowID} style={{ padding: '0 15px' }}>
+        <div key={rowID} style={{padding: '0 15px'}} onClick={() => this.handleLinkClick(rowID)}>
           <div
             style={{
               lineHeight: '50px',
@@ -118,11 +129,11 @@ class Home extends Component {
               borderBottom: '1px solid #F6F6F6',
             }}
           >{obj.title}</div>
-          <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
-            <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
-            <div style={{ lineHeight: 1 }}>
-              <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
-              <div><span style={{ fontSize: '30px', color: '#FF6E27' }}>{rowID}</span>¥</div>
+          <div style={{display: '-webkit-box', display: 'flex', padding: '15px 0'}}>
+            <img style={{height: '64px', marginRight: '15px'}} src={obj.img} alt=""/>
+            <div style={{lineHeight: 1}}>
+              <div style={{marginBottom: '8px', fontWeight: 'bold'}}>{obj.des}</div>
+              <div><span style={{fontSize: '30px', color: '#FF6E27'}}>{rowID}</span>¥</div>
             </div>
           </div>
         </div>
@@ -143,7 +154,7 @@ class Home extends Component {
           ref={el => this.lv = el}
           dataSource={this.state.dataSource}
           renderHeader={() => <span>header</span>}
-          renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
+          renderFooter={() => (<div style={{padding: 30, textAlign: 'center'}}>
             {this.state.isLoading ? 'Loading...' : 'Loaded'}
           </div>)}
           renderRow={row}
@@ -151,7 +162,9 @@ class Home extends Component {
           className="am-list"
           pageSize={4}
           useBodyScroll
-          onScroll={() => { console.log('scroll'); }}
+          onScroll={() => {
+            console.log('scroll');
+          }}
           scrollRenderAheadDistance={500}
           onEndReached={this.onEndReached}
           onEndReachedThreshold={10}

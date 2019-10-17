@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {TabBar, Icon, Button, NavBar} from "antd-mobile";
 import styles from "./Shelf.css";
-import Home from "./pages/home/Home.jsx";
-import Mine from "./pages/mine/Mine";
-import Life from "./pages/life/Life";
-import Friend from "./pages/friend/Friend";
+import Home from "../home/Home.jsx";
+import Mine from "../mine/Mine";
+import Life from "../life/Life";
+import Friend from "../friend/Friend";
 
 
 const customIcon = () => (
@@ -36,7 +36,7 @@ class Shelf extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'blueTab',
       hidden: false,
       fullScreen: true,
     };
@@ -97,7 +97,7 @@ class Shelf extends Component {
           hidden={this.state.hidden}>
           <TabBar.Item
             title="首页"
-            key="home"
+            key="Home"
             icon={<div style={{
               width: '22px',
               height: '22px',
@@ -123,7 +123,11 @@ class Shelf extends Component {
           >
             {this.renderContent(0)}
           </TabBar.Item>
+          
           <TabBar.Item
+            title="生活"
+            key="Life"
+            badge={'new'}
             icon={
               <div style={{
                 width: '22px',
@@ -140,9 +144,6 @@ class Shelf extends Component {
               }}
               />
             }
-            title="生活"
-            key="Life"
-            badge={'new'}
             selected={this.state.selectedTab === 'redTab'}
             onPress={() => {
               this.setState({
@@ -153,7 +154,11 @@ class Shelf extends Component {
           >
             {this.renderContent(1)}
           </TabBar.Item>
+          
           <TabBar.Item
+            title="朋友"
+            key="Friend"
+            dot
             icon={
               <div style={{
                 width: '22px',
@@ -170,9 +175,7 @@ class Shelf extends Component {
               }}
               />
             }
-            title="朋友"
-            key="Friend"
-            dot
+
             selected={this.state.selectedTab === 'greenTab'}
             onPress={() => {
               this.setState({
@@ -182,11 +185,12 @@ class Shelf extends Component {
           >
             {this.renderContent(2)}
           </TabBar.Item>
+          
           <TabBar.Item
-            icon={{uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg'}}
-            selectedIcon={{uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg'}}
             title="我的"
             key="my"
+            icon={{uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg'}}
+            selectedIcon={{uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg'}}
             selected={this.state.selectedTab === 'yellowTab'}
             onPress={() => {
               this.setState({
