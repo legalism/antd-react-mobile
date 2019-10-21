@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Button, ActivityIndicator, WhiteSpace,} from 'antd-mobile';
 import styles from './style.scss';
 
-const url = "http://5da57bbd57f48b0014fba8f3.mockapi.io/demo/loginState";
+const url = "http://localhost:8888/mock/login/loginState.json";
 export default class Root extends Component {
   constructor(props) {
     super(props);
