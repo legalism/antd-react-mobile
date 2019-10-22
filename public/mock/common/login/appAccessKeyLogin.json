@@ -1,0 +1,28 @@
+{
+  "success":true,
+  "code": "1",
+  "message": "登录成功",
+  "data": {
+    "id": 56173334544902,
+    "merchantId": "1",
+    "username": "13693302061",
+    "displayName": "136****2061",
+    "password": null,
+    "salt": null,
+    "type": "PERSONAL",
+    "wechatId": null,
+    "accessKey": null,
+    "email": null,
+    "rId": -1,
+    "rName": null,
+    "mobile": "13693302061",
+    "roleIds": [],
+    "locked": false,
+    "auto": false,
+    "choice": null,
+    "roleNameStr": null,
+    "mockSessionId": "56173334725122",
+    "credentialsSalt": "13693302061null",
+    "roleIdsStr": ""
+  }
+}
