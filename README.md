@@ -1,4 +1,4 @@
-# antd-demo
+# antd-react-mobile
 react+ant design mobile实现移动端web
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
